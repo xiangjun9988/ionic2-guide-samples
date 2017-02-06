@@ -12,10 +12,35 @@
         If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
     </p>
     <p>
-        {{message}}
+        {{message}}来自{{person.city}}的{{person.name}}!
     </p>
-    <button ion-button (click)="navToAbout()">关于</button>
+    <p>
+        <button ion-button (click)="navToAbout()">关于</button>
+    </p>
     <p>
         <welcome></welcome>
     </p>
+    <my-welcome *ngIf="isShowWelcome" [currentPerson]="person"></my-welcome>
+    <button ion-button (click)="addAge(person)">增加年龄</button>
+    <ion-item>
+        <ion-label>姓名：</ion-label>
+        <ion-input [(ngModel)]="person.name"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>姓名：</ion-label>
+        <ion-input [value]="person.name" (input)="person.name=$event.target.value"></ion-input>
+    </ion-item>
+    <button ion-button (click)="changeWelcomeStatus()">切换状态</button>
+    <ion-item>
+        <ion-label>Switch Value：</ion-label>
+        <ion-input [(ngModel)]="switchValue"></ion-input>
+    </ion-item>
+    <ion-item [ngSwitch]="switchValue">
+        <span *ngSwitchCase="'北京'">switchValue为北京</span>
+        <span *ngSwitchCase="'上海'">switchValue为上海</span>
+        <span *ngSwitchCase="'广州'">switchValue为广州</span>
+        <span *ngSwitchDefault>switchValue不是北京、上海或广州</span>
+    </ion-item>
+    <button ion-button (click)="navToList()">显示列表页</button>
+    <button ion-button (click)="navToPipe()">显示Pipe页</button>
 </ion-content>
