@@ -8,6 +8,7 @@ import { PipeSamplePage } from '../pages/pipe-sample/pipe-sample';
 import { WelcomeComponent } from '../components/welcome/welcome';
 import { MyWelcomeComponent } from '../components/my-welcome/my-welcome';
 import { Level } from '../pipes/level';
+import { PersonService } from '../providers/person-service';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,9 @@ import { Level } from '../pipes/level';
     ListSamplePage,
     PipeSamplePage
   ],
-  providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
+  providers: [
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    PersonService
+  ]
 })
 export class AppModule { }
